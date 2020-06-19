@@ -1,5 +1,4 @@
 
-
 # Shuffle Remote PMem extension for Apache Spark Enabling and Testing Guide
 
 June 2020
@@ -8,11 +7,7 @@ Revision 1.4
 
 ## Notes
 
-Please be noted the this project will be migrated to OAP
-<https://github.com/intel-bigdata/oap>, the enabling guide might be not
-up to date.
-
-Shuffle RPMem extension for Spark  (AKA. RPMem shuffle) depends on multiple
+Shuffle RPMem extension for Spark  (AKA. RPMem shuffle extension, previously Spark-PMoF) depends on multiple
 native libraries like libfabrics, libcuckoo, PMDK. This enabling guide
 covers the installing process for the time being, but it might change as
 the install commands and related dependency packages for the 3^rd^ party
@@ -467,6 +462,14 @@ spark.shuffle.manager						org.apache.spark.shuffle.pmof.PmofShuffleManager
 spark.driver.extraClassPath                                     /$path /Spark-PMoF/core/target/Spark-PMoF-1.0-jar-with-dependencies.jar
 spark.executor.extraClassPath                                   /$path/Spark-PMoF/core/target/Spark-PMoF-1.0-jar-with-dependencies.jar
 
+=======
+## Installation
+Make sure you got [HPNL](https://github.com/Intel-bigdata/HPNL) installed. Please refer to the enabling guide in doc for other dependencies. 
+
+```shell
+git clone https://github.com/Intel-bigdata/oap.git
+cd oap/oap-shuffle/RPMem-shuffle; mvn package
+>>>>>>> 4653698036fbad8a25f2cb4c5b65398ad03ed3ce
 ```
 #### Switch On/Off PMem and RDMA**
 ```bash
@@ -530,6 +533,12 @@ spark.shuffle.pmof.spill_throttle       2096128                 // 2MB – 1024 
 								// equal to shuffle_block_size
 spark.driver.memory    						10g
 spark.yarn.driver.memoryOverhead 				5g
+=======
+
+## Usage
+For detail instructions on how to deploy and test RPMem shuffle extension, please refer to the enabling guide in the doc folder. 
+This plugin current supports Spark 2.3 and works well on various Network fabrics, including Socket, **RDMA** and **Omni-Path**. Before runing Spark workload, add following contents in spark-defaults.conf, then have fun! :-)
+>>>>>>> 4653698036fbad8a25f2cb4c5b65398ad03ed3ce
 
 ```
 **Configuration of RDMA enabled case**
