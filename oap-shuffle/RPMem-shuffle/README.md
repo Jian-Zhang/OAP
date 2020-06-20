@@ -203,7 +203,6 @@ please install NIC drivers accordingly.
 ``` bash
 # Download MLNX_OFED_LINUX-4.7-3.2.9.0-* from https://community.mellanox.com/s/article/howto-install-mlnx-ofed-driver 
 # e.g., wget http://www.mellanox.com/downloads/ofed/MLNX_OFED-<version>/MLNX_OFED_LINUX-<version>-<distribution>-<arch>.tgz . 
-# (inside lab mirror) root@vsr140:/mnt/spark-pmof/tool
 tar zxf MLNX_OFED_LINUX-4.7-3.2.9.0-*
 cd MLNX_OFED_LINUX-4.7-3.2.9.0-
 ./mlnxofedinstall --add-kernel-support.
@@ -503,7 +502,7 @@ executor must has memory capacity greater than
 
 Recommendation configuration as below, but it needs to be adjustted accordingly based on your system configurations. 
 ```bash 
-Yarn.executor.num    4                                          // same as PMem devices number
+Yarn.executor.num    4                                          // same as PMem namespaces number
 Yarn.executor.cores  18                                     	// total core number divide executor number
 spark.executor.memory  15g                                      // 2MB * numPartition(200) * 18 * 2
 spark.yarn.executor.memoryOverhead 5g                        	// 30% of  spark.executor.memory
@@ -531,8 +530,8 @@ spark.shuffle.pmof.reduce_serializer_buffer_size 		262144
 spark.shuffle.pmof.chunk_size                                 	262144
 spark.shuffle.pmof.server_pool_size                      	3
 spark.shuffle.pmof.client_pool_size                       	3
-spark.shuffle.pmof.node                                         sr609-172.168.0.209,sr611-172.168.0.211
-spark.driver.rhost                                              172.168.0.209 //change to your host
+spark.shuffle.pmof.node                                         sr609-172.168.0.209,sr611-172.168.0.211//Host-IP pairs 
+spark.driver.rhost                                              172.168.0.209 //change to your host IP 
 spark.driver.rport                                              61000
 
 ```
@@ -739,11 +738,9 @@ spark.shuffle.pmof.node                                     sr609-172.168.0.209,
 spark.driver.rhost                                          172.168.0.209 //change to your host
 spark.driver.rport                                          61000
 ```
-### Recommended OS (without BKC access)
+### Reference guides (without BKC access)
 -----------------------------------
 If you do not have BKC access, please following below official guide:
-(this is official PMEMM guide, it is a pre-request for PMoF deployment)
-
 (1): General PMEMM support: PMEMM support
 <https://www.intel.com/content/www/us/en/support/products/190349/memory-and-storage/data-center-persistent-memory/intel-optane-dc-persistent-memory.html>
 
