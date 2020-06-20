@@ -654,7 +654,7 @@ Modify *\$HiBench-HOME/conf/spark.conf* to specify the spark home and
 other spark configurations. It will overwrite the configuration of
 *\$SPARK-HOME/conf/spark-defaults.conf* at run time.
 
-### 6.2.4 Launch the benchmark
+#### 6.2.4 Launch the benchmark
 
 Need to prepare the data with
 
@@ -694,7 +694,7 @@ leave_bench
 
 ```
 
-#### 6.2.4 Check the result
+#### 6.2.5 Check the result
 
 Check the result at spark history server to see the execution time and
 other spark metrics like spark shuffle spill status. (Need to start
