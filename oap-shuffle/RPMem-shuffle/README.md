@@ -1,4 +1,3 @@
-
 # Shuffle Remote PMem extension for Apache Spark Enabling and Testing Guide
 
 June 2020
